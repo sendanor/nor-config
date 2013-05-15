@@ -95,14 +95,20 @@ mod.from = function(srcdir) {
 		}
 	};
 
+	var pkg_file = path.join(basedir, 'package.json');
+	var pkg_config = file2obj(pkg_file);
+
 	var default_file = path.join(basedir, 'config.json');
 	var default_config = file2obj(default_file);
+
 	var local_file = path.join(basedir, 'local', 'config.json');
 	var local_config = file2obj(local_file);
-	console.log("DEBUG: def", default_config, " from ", default_file);
-	console.log("DEBUG: local", local_config, " from ", local_file);
+
+	console.log(__filename + ": DEBUG: def", default_config, " from ", default_file);
+	console.log(__filename + ": DEBUG: local", local_config, " from ", local_file);
 
 	var config = append_to(config, default_config).and(local_config).config;
+	config.pkg = pkg_config;
 	var tools = new ConfigObj(config);
 	config._has = tools.has.bind(tools);
 	config._required = tools.required.bind(tools);
