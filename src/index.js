@@ -104,8 +104,8 @@ mod.from = function(srcdir) {
 	var local_file = path.join(basedir, 'local', 'config.json');
 	var local_config = file2obj(local_file);
 
-	console.log(__filename + ": DEBUG: def", default_config, " from ", default_file);
-	console.log(__filename + ": DEBUG: local", local_config, " from ", local_file);
+	//console.log(__filename + ": DEBUG: def", default_config, " from ", default_file);
+	//console.log(__filename + ": DEBUG: local", local_config, " from ", local_file);
 
 	var config = append_to(config, default_config).and(local_config).config;
 	config.pkg = pkg_config;
