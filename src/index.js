@@ -107,13 +107,13 @@ mod.from = function(srcdir) {
 	//console.log(__filename + ": DEBUG: def", default_config, " from ", default_file);
 	//console.log(__filename + ": DEBUG: local", local_config, " from ", local_file);
 
-	var config = append_to(config, default_config).and(local_config).config;
-	config.pkg = pkg_config;
-	var tools = new ConfigObj(config);
-	config._has = tools.has.bind(tools);
-	config._required = tools.required.bind(tools);
-	config._def = tools.def.bind(tools);
-	return config;
+	var c = append_to(config, default_config).and(local_config).config;
+	c.pkg = pkg_config;
+	var tools = new ConfigObj(c);
+	c._has = tools.has.bind(tools);
+	c._required = tools.required.bind(tools);
+	c._def = tools.def.bind(tools);
+	return c;
 };
 
 mod.tools = function(obj) {
