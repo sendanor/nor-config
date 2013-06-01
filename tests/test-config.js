@@ -13,7 +13,6 @@ vows.describe('Testing config').addBatch({
 		topic: config,
 		'is object': function(obj) { assert.isObject(obj); },
 		'.from is function': function(obj) { assert.isFunction(obj.from); },
-		'.tools is function': function(obj) { assert.isFunction(obj.tools); },
 		'.from(testdata_dir) dost not throw Error': function(obj) {
 			var c;
 			assert.doesNotThrow(function () {

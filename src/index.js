@@ -57,7 +57,7 @@ mod.from = function(srcdir) {
 	/* Append config file into config object */
 	function append_to(config, obj) {
 		if(config === undefined) {
-			console.warn('Warning: config internal append_to() called with undefined first argument!');
+			//console.warn('Warning: config internal append_to() called with undefined first argument!');
 			config = {};
 		} else if(! (config && (typeof config === 'object')) ) {
 			throw new TypeError("Attempt to append an object into " + (typeof config) + "!");
@@ -122,8 +122,10 @@ mod.from = function(srcdir) {
 	return c;
 };
 
+/*
 mod.tools = function(obj) {
 	return new ConfigObj(obj);
 };
+*/
 
 /* EOF */
