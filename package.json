@@ -1,7 +1,7 @@
 {
   "name": "nor-config",
   "description": "Configuration module for Sendanor's apps.",
-  "version": "0.0.2",
+  "version": "0.1.1",
   "author": "Jaakko-Heikki Heusala <jheusala@iki.fi>",
   "license": "MIT",
   "readmeFilename": "README.md",
