@@ -1,4 +1,4 @@
-[![Build Status](https://secure.travis-ci.org/sendanor/nor-config.png?branch=master)](http://travis-ci.org/sendanor/nor-config)
+[![Build Status](https://secure.travis-ci.org/Sendanor/nor-config.png?branch=master)](http://travis-ci.org/Sendanor/nor-config)
 
 nor-config -- Common configuration module for Sendanor's apps
 =============================================================
