@@ -14,11 +14,10 @@ ConfigObj.prototype.has = function(key) {
 };
 
 /* config.require(key) is verbose test for configuration setting */
-ConfigObj.prototype.required = function(key) {
+ConfigObj.prototype.require = function(key) {
 	var config = this.config;
 	if(config[key] === undefined) {
-		console.error('Error: Missing required configuration setting '+key+'!');
-		return false;
+		throw new ReferenceError('Missing required setting: '+key);
 	}
 	return true;
 };
@@ -57,7 +56,7 @@ mod.from = function(srcdir) {
 	/* Append config file into config object */
 	function append_to(config, obj) {
 		if(config === undefined) {
-			console.warn('Warning! config internal append_to() called with undefined first argument!');
+			console.warn('Warning: config internal append_to() called with undefined first argument!');
 			config = {};
 		} else if(! (config && (typeof config === 'object')) ) {
 			throw new TypeError("Attempt to append an object into " + (typeof config) + "!");
@@ -116,7 +115,7 @@ mod.from = function(srcdir) {
 	c.pkg = pkg_config;
 	var tools = new ConfigObj(c);
 	c._has = tools.has.bind(tools);
-	c._required = tools.required.bind(tools);
+	c._require = tools.require.bind(tools);
 	c._def = tools.def.bind(tools);
 	return c;
 };

@@ -36,7 +36,7 @@ vows.describe('Testing config').addBatch({
 			},
 			'is object': function(obj) { assert.isObject(obj); },
 			'Object.keys(obj).toString()': function(obj) {
-				assert.strictEqual(Object.keys(obj).toString(), 'dirs,foo,pkg,_has,_required,_def');
+				assert.strictEqual(Object.keys(obj).toString(), 'dirs,foo,pkg,_has,_require,_def');
 			},
 			'.dirs is object': function(obj) { assert.isObject(obj.dirs); },
 			'.dirs.root': function(obj) {
@@ -45,10 +45,21 @@ vows.describe('Testing config').addBatch({
 			},
 			'._has is function': function(obj) { assert.isFunction(obj._has); },
 			'._has is object': function(obj) { assert.isObject(obj.pkg); },
-			'._required is function': function(obj) { assert.isFunction(obj._required); },
+			'._require is function': function(obj) { assert.isFunction(obj._require); },
 			'._def is function': function(obj) { assert.isFunction(obj._def); },
-			'._has("foo")': function(obj) { 
+			'._has("foo")': function(obj) {
 				assert.isTrue(obj._has("foo"));
+			},
+			'._has("bar")': function(obj) {
+				assert.isFalse(obj._has("bar"));
+			},
+			'._require("foo")': function(obj) {
+				assert.isTrue(obj._require("foo"));
+			},
+			'._require("bar") throws ReferenceError': function(obj) {
+				assert.throws(function() {
+					obj._require("bar");
+				}, ReferenceError);
 			},
 			'.foo is "bar"': function(obj) { 
 				assert.isString(obj.foo);
