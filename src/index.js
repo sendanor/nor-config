@@ -42,16 +42,22 @@ mod.from = function(srcdir) {
 		if(!fs.existsSync(file)) {
 			return {};
 		}
-		var buffer = JSON.parse(fs.readFileSync(file), {'encoding':'utf8'});
-		if(!(buffer && (typeof buffer === 'object'))) {
-			throw new TypeError('Failed to parse file as an object: ' + file);
+		try {
+			var buffer = JSON.parse(fs.readFileSync(file), {'encoding':'utf8'});
+			if(!(buffer && (typeof buffer === 'object'))) {
+				throw new TypeError('Failed to parse file as an object: ' + file);
+			}
+			return buffer;
+		} catch(e) {
+			console.warn("Warning! Failed to read file " + file + ": " + e);
+			return {};
 		}
-		return buffer;
 	}
 
 	/* Append config file into config object */
 	function append_to(config, obj) {
 		if(config === undefined) {
+			console.warn('Warning! config internal append_to() called with undefined first argument!');
 			config = {};
 		} else if(! (config && (typeof config === 'object')) ) {
 			throw new TypeError("Attempt to append an object into " + (typeof config) + "!");
@@ -74,7 +80,7 @@ mod.from = function(srcdir) {
 
 			// Objects
 			if(new_value && (typeof new_value === 'object')) {
-				console.log("new_value", new_value);
+				//console.log("new_value", new_value);
 				config[key] = append_to(config[key], new_value).config;
 				return;
 			}
@@ -85,12 +91,11 @@ mod.from = function(srcdir) {
 		return {"and": append_to.bind({}, config), "config":config};
 	}
 
-	var basedir = path.dirname(srcdir);
+	var basedir = srcdir;
 	var config_fn = path.join(basedir, 'config.js');
 
 	var config = {
 		'dirs': {
-			'src': srcdir,
 			'root': basedir
 		}
 	};
