@@ -41,8 +41,8 @@ The `./app.js` uses it like this:
 
 ```javascript
 var config = require('nor-config').from(__dirname);
-config._def('host', 'localhost');
-config._require('port');
+config._def('host', 'localhost');   // Set default value
+config._require('port');            // If port is missing, throws an exception.
 console.log(config.host + ':' + config.port);
 ```
 
