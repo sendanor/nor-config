@@ -42,16 +42,16 @@ mod.from = function(srcdir) {
 		if(!fs.existsSync(file)) {
 			return {};
 		}
-		try {
+		//try {
 			var buffer = JSON.parse(fs.readFileSync(file), {'encoding':'utf8'});
 			if(!(buffer && (typeof buffer === 'object'))) {
 				throw new TypeError('Failed to parse file as an object: ' + file);
 			}
 			return buffer;
-		} catch(e) {
-			console.warn("Warning! Failed to read file " + file + ": " + e);
-			return {};
-		}
+		//} catch(e) {
+		//	console.warn("Warning! Failed to read file " + file + ": " + e);
+		//	return {};
+		//}
 	}
 
 	/* Append config file into config object */
