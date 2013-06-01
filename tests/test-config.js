@@ -61,7 +61,7 @@ vows.describe('Testing config').addBatch({
 					obj._require("bar");
 				}, ReferenceError);
 			},
-			'._def("hello", "world")': function(obj) {
+			'._def("hello", "world")': {
 				topic: function(obj) {
 					return obj._def("hello", "world");
 				},
