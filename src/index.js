@@ -72,8 +72,10 @@ mod.from = function(srcdir) {
 			if(new_value && (new_value instanceof Array)) {
 				if(config[key] && (config[key] instanceof Array)) {
 					config[key] = config[key].concat(new_value);
+				} else if(config[key] === undefined) {
+					config[key] = [].concat(new_value);
 				} else {
-					throw new TypeError("Attempt to append an object into " + (typeof config[key]) + "!");
+					throw new TypeError("Attempt to append an array into " + (typeof config[key]) + "!");
 				}
 				return;
 			}

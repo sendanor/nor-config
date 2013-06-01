@@ -36,7 +36,7 @@ vows.describe('Testing config').addBatch({
 			},
 			'is object': function(obj) { assert.isObject(obj); },
 			'Object.keys(obj).toString()': function(obj) {
-				assert.strictEqual(Object.keys(obj).toString(), 'dirs,foo,pkg,_has,_require,_def');
+				assert.strictEqual(Object.keys(obj).toString(), 'dirs,foo,colors,pkg,_has,_require,_def');
 			},
 			'.dirs is object': function(obj) { assert.isObject(obj.dirs); },
 			'.dirs.root': function(obj) {
