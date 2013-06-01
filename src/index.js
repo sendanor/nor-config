@@ -7,13 +7,13 @@ function ConfigObj(config) {
 	this.config = config;
 }
 
-/* config.has(key) is silent test for configuration setting */
+/** config.has(key) is silent test for configuration setting */
 ConfigObj.prototype.has = function(key) {
 	var config = this.config;
 	return (config[key] === undefined) ? false : true;
 };
 
-/* config.require(key) is verbose test for configuration setting */
+/** config.require(key) is verbose test for configuration setting */
 ConfigObj.prototype.require = function(key) {
 	var config = this.config;
 	if(config[key] === undefined) {
@@ -22,12 +22,13 @@ ConfigObj.prototype.require = function(key) {
 	return true;
 };
 
-/* config.def(key, value) sets default values */
+/** config.def(key, value) sets default values */
 ConfigObj.prototype.def = function(key, value) {
 	var config = this.config;
 	if(config[key] === undefined) {
 		config[key] = value;
 	}
+	return this;
 };
 
 /* */
@@ -116,7 +117,10 @@ mod.from = function(srcdir) {
 	var tools = new ConfigObj(c);
 	c._has = tools.has.bind(tools);
 	c._require = tools.require.bind(tools);
-	c._def = tools.def.bind(tools);
+	c._def = function(key, value) {
+		tools.def(key, value);
+		return c;
+	};
 	return c;
 };
 

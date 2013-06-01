@@ -61,6 +61,18 @@ vows.describe('Testing config').addBatch({
 					obj._require("bar");
 				}, ReferenceError);
 			},
+			'._def("hello", "world")': function(obj) {
+				topic: function(obj) {
+					return obj._def("hello", "world");
+				},
+				'._has("hello")': function(obj) {
+					assert.isFalse(obj._has("bar"));
+				},
+				'.hello is "world"': function(obj) { 
+					assert.isString(obj.hello);
+					assert.strictEqual(obj.hello, "world");
+				}
+			},
 			'.foo is "bar"': function(obj) { 
 				assert.isString(obj.foo);
 				assert.strictEqual(obj.foo, "bar");
