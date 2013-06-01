@@ -1,3 +1,6 @@
 {
-  "colors": ["black"]
+  "colors": ["black"],
+  "flags": {
+    "fi": "fi.png"
+  }
 }

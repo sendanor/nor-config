@@ -1,4 +1,7 @@
 {
 	"foo": "bar",
-    "colors": ["orange", "blue"]
+    "colors": ["orange", "blue"],
+    "flags": {
+      "en": "en.png"
+    }
 }

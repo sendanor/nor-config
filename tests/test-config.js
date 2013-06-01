@@ -36,7 +36,7 @@ vows.describe('Testing config').addBatch({
 			},
 			'is object': function(obj) { assert.isObject(obj); },
 			'Object.keys(obj).toString()': function(obj) {
-				assert.strictEqual(Object.keys(obj).toString(), 'dirs,foo,colors,pkg,_has,_require,_def');
+				assert.strictEqual(Object.keys(obj).toString(), 'dirs,foo,colors,flags,pkg,_has,_require,_def');
 			},
 			'.dirs is object': function(obj) { assert.isObject(obj.dirs); },
 			'.dirs.root': function(obj) {
@@ -76,6 +76,14 @@ vows.describe('Testing config').addBatch({
 			'.foo is "bar"': function(obj) { 
 				assert.isString(obj.foo);
 				assert.strictEqual(obj.foo, "bar");
+			},
+			'.colors is ["orange", "blue", "black"]': function(obj) { 
+				assert.isArray(obj.colors);
+				assert.deepEqual(obj.colors, ["orange", "blue", "black"]);
+			},
+			'.flags is {"en":"en.png","fi":"fi.png"}': function(obj) { 
+				assert.isObject(obj.flags);
+				assert.strictEqual(JSON.stringify(obj.flags), '{"en":"en.png","fi":"fi.png"}');
 			}
 		}
 	},
