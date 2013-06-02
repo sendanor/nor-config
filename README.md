@@ -1,4 +1,4 @@
-[![Build Status](https://secure.travis-ci.org/Sendanor/nor-config.png?branch=master)](http://travis-ci.org/Sendanor/nor-config)
+[![Build Status](https://secure.travis-ci.org/Sendanor/nor-config.png?branch=master)](http://travis-ci.org/Sendanor/nor-config#readme)
 
 nor-config -- Config library for Node.js
 ========================================
@@ -8,7 +8,7 @@ nor-config -- Config library for Node.js
 License
 -------
 
-It's under MIT-style open source license -- see [https://github.com/Sendanor/nor-config/blob/master/LICENSE.txt](LICENSE.txt).
+It's under MIT-style open source license -- see [LICENSE.txt](https://github.com/Sendanor/nor-config/blob/master/LICENSE.txt).
 
 Installation
 ------------
